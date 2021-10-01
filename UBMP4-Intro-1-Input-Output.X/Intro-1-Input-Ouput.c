@@ -62,7 +62,7 @@ int main(void)
     }
 }
 
-/* Program Analysis
+/* Learn More - Program Analysis Activities
  * 
  * 1. How many times do the LEDs flash if SW2 is quickly pressed and released?
  *    Do the LEDs keep flashing when SW2 is held? Look at the program and
