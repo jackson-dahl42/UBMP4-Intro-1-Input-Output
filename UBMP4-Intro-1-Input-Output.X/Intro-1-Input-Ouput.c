@@ -31,6 +31,7 @@ int main(void)
     // Code in this while loop runs repeatedly.
     while(1)
 	{
+        
         // If SW2 is pressed, make a flashy light pattern
         if(SW2 == 0)
         {
@@ -51,7 +52,14 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
-        
+
+        if(SW5 == 0)
+        {
+            BEEPER = 1;
+            __delay_us(567);
+            BEEPER = 0;
+            __delay_us(567);
+        }
         // Add code for your Program Analysis and Programming Activities here:
 
         // Activate bootloader if SW1 is pressed.
@@ -67,8 +75,14 @@ int main(void)
  * 1. How many times do the LEDs flash if SW2 is quickly pressed and released?
  *    Do the LEDs keep flashing when SW2 is held? Look at the program and
  *    explain why this happens when SW2 is held.
+ *    Answer: The LEDs flash once if SW2 is quickly pressed and released. The LEDs keep flashing when SW2 is held.
+ *    When SW2 is held its value is equal to 0 and this triggers the if statement to run its code. This code
+ *    includes the LEDs turning on with a 100 ms delay and then turning off in with a 100 ms delay. The machine
+ *    runs the code from top to bottom. When the button is held the value of the SW2 is 0 so it keeps running the code
+ *    because it is inside the while loop and the code is repeated.
  * 
  * 2. Explain the difference between the statements: LED3 = 0; and LED3 = 1;
+ *    Answer: LED3 = 0; means turn the light off whule LED3 = 1; means turn the light on.
  * 
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
