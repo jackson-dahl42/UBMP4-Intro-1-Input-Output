@@ -36,7 +36,7 @@ int main(void)
         if(SW2 == 0)
         {
             LED3 = 1;
-            __delay_ms(100);
+            __delay_ms(4205);
             LED4 = 1;
             __delay_ms(100);
             LED5 = 1;
@@ -75,6 +75,7 @@ int main(void)
  * 1. How many times do the LEDs flash if SW2 is quickly pressed and released?
  *    Do the LEDs keep flashing when SW2 is held? Look at the program and
  *    explain why this happens when SW2 is held.
+
  *    Answer: The LEDs flash once if SW2 is quickly pressed and released. The LEDs keep flashing when SW2 is held.
  *    When SW2 is held its value is equal to 0 and this triggers the if statement to run its code. This code
  *    includes the LEDs turning on with a 100 ms delay and then turning off in with a 100 ms delay. The machine
@@ -82,11 +83,15 @@ int main(void)
  *    because it is inside the while loop and the code is repeated.
  * 
  * 2. Explain the difference between the statements: LED3 = 0; and LED3 = 1;
- *    Answer: LED3 = 0; means turn the light off whule LED3 = 1; means turn the light on.
+
+ *    Answer: LED3 = 0; means turn the light off while LED3 = 1; means turn the light on.
  * 
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
  *    when the statement LED3 = 1; runs?
+ *
+ *    Answer: I excpect the voltage of the microcontroller to LED3 to be 0 when the statement  LED3 = 0; runs. I excpect the voltge
+ *    of the microcontroller to  the LED3 would be 2.9 V if the statement LED3 = 1; runs.
  * 
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
@@ -94,6 +99,10 @@ int main(void)
  * 4. The statement 'if(SW2 == 0)' uses two equal signs, while the statement
  *    'LED3 = 1;' uses a single equal sign. What operation is performed by one
  *    equal sign? What operation is performed by two equal signs?
+ *
+ *    Answer: The operation that one equal sign does is assign a value to a variable. The operation performed by two equal signs is a boolean operator.
+ *    When the the two values on both sides of the two equal signs are the same the boolean operator says the statement is true and runs the code.
+ *    It does false for everything else.
  * 
  * 5. The following program code includes instructions that write to the PORTC
  *    output latches directly. Try it by copying and pasting this code below
@@ -110,6 +119,9 @@ int main(void)
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
+ *
+ *    Answer: Multiple lights will turn on. Perhaps you could use this to save writing by activating multiple lights wiht one statement.
+ *    One disadvantage is that you can't controll the individual LED with this statement.
  * 
  * 6. Next, compare the operation of 'if' and 'while' structures to simulate
  *    momentary buttons. Replace the code you added in 5, above, with this code:
@@ -139,6 +151,11 @@ int main(void)
  *    Next, try press and holding SW4 while pressing and releasing SW3. Does it
  *    work as expected? Explain the difference in operation between the 'if' and
  *    'while' structures making up the momentary button code.
+ *
+ *    Answer: When the code in the while loop is running the if statements are ignored. You cna think that the computer runs code from top to bottom. When 
+ *    The code enters a while loop it runs the code top to bottom, but when it reaches the bottom it gets sent back to the top of the while loop. Because
+ *    the computer only runs the code in the while loop while it is activated the computer ignores the if statement. THis means the functionality of, the 
+ *    if statement will stop when the while loop is running.
  * 
  * 7. Let's explore logical conditions using 'if' statements. Replace the code
  *    added in 6, above, with this nested if code to make a logical AND
@@ -163,6 +180,9 @@ int main(void)
 
  *    Test the code to ensure it works as expected. Does the order of the if
  *    conditions matter? (eg. swap the conditional checks for SW3 and SW4)
+ *
+ *    Answer: You have to press both of the buttons in order to activate the conditions.
+ *    The order doesn't matter, you press SW4 then SW3 or SW3 and then SW4.
  * 
  * 8. Next, replace the code from 7 with the following code which implements a
  *    logical AND conditional operator composed of two ampersands '&&':
@@ -180,6 +200,9 @@ int main(void)
  *    Does '&&' work the same way as the nested if structures? Can you think of
  *    at least one advantage of using a logical conditional operator instead of
  *    nested if structures?
+ *
+ *    Answer: The '&&' works the same way a sthe nested if structures. One advantage of using a logical operator is that is takes up less writing then nested brackets.
+ *    also it might make it easier to read code. ex. if(x>y && w>v && z>a) if this was a nested bracket it would be harder to understand,
  * 
  * 9. Replace the double ampersand '&&' with double vertical bars '||)' to make
  *    a logical OR conditional operator. Your code should look like this:
@@ -195,7 +218,8 @@ int main(void)
         }
 
  *    Describe the conditions under which LED4 turns on.
- * 
+ *    
+ *     Answer: The LED4 will turn on if SW3 is pressed or if SW4 is pressed or if both SW3 and SW4 are pressed.
  * 
  * Programming Activities
  * 
@@ -205,6 +229,8 @@ int main(void)
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
+ *    
+ *    Answer: Yes, the delay can be made longer. The maximum delay is 4205 ms.
  * 
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
  *    make delays shorter than 1ms, specify a delay in microseconds using the
@@ -224,6 +250,8 @@ int main(void)
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
+ *
+ *    Answer: When the delay is decreased the pitch increases, but when teh delay increases th epitch decreases.
  * 
  * 3. This code demonstrates a more compact way of toggling the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
@@ -240,6 +268,8 @@ int main(void)
  *    be in after this code runs? While one advantage of this method is smaller
  *    code, can you think of one or more disadvantages based on its output when
  *    the button is released?
+ *
+ *    Answer: the beeper will beep and then stop. You cannot control the delay of the beeper shutting off.
  * 
  * 4. Using modified versions of the original SW2 'if' structure, create a
  *    program that makes a unique LED flashing pattern for each pushbutton.
