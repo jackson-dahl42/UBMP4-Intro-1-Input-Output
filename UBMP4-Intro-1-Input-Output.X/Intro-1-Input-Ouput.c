@@ -33,38 +33,22 @@ int main(void)
 	{
         
         // If SW2 is pressed, make a flashy light pattern
-        if(SW2 == 0)
-        {
-            LED3 = 1;
-            __delay_ms(4205);
-            LED4 = 1;
-            __delay_ms(100);
-            LED5 = 1;
-            __delay_ms(100);
-            LED6 = 1;
-            __delay_ms(100);
-            LED3 = 0;
-            __delay_ms(100);
-            LED4 = 0;
-            __delay_ms(100);
-            LED5 = 0;
-            __delay_ms(100);
-            LED6 = 0;
-            __delay_ms(100);
-        }
 
-        if(SW5 == 0)
-        {
-            BEEPER = 1;
-            __delay_us(567);
-            BEEPER = 0;
-            __delay_us(567);
-        }
+
         // Add code for your Program Analysis and Programming Activities here:
+  
+        
 
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
         {
+            BEEPER = !BEEPER;
+            __delay_us(1000);
+            LED1 = 1;
+            __delay_ms(100);
+            LED1 = 0;
+            __delay_ms(100);
+            LED1 = 1;
             RESET();
         }
     }
@@ -277,23 +261,156 @@ int main(void)
  *    Test each of your flashing patterns. Describe what happens when more than
  *    one button is held. Do all of the patterns try to flash the LEDs at the
  *    same time, or sequentially? Explain why this is.
+
+//Program for different light patterns for each button.
+
+        if(SW3 == 0)
+        {
+           LED3 = 1;
+           LED5 = 1;
+           __delay_ms(100);
+           LED3 = 0;
+           LED5 = 0;
+           __delay_ms(100);
+           LED4 = 1;
+           LED6 = 1;
+           __delay_ms(100);
+           LED4 = 0;
+           LED6 = 0;
+           __delay_ms(100);
+        }
+
+        if(SW4 == 0)
+        {
+            LED3 = 1;
+            LED4 = 1;
+            LED5 = 1;
+            LED6 = 1;
+            __delay_ms(100);
+            LED3 = 0;
+            LED4 = 0;
+            LED5 = 0;
+            LED6 = 0;
+            __delay_ms(100);
+        }
+        
+        if(SW5 == 0)
+        {
+            LED6 = 1;
+            __delay_ms(100);
+            LED5 = 1;
+            __delay_ms(100);
+            LED4 = 1;
+            __delay_ms(100);
+            LED3 = 1;
+            __delay_ms(100);
+            LED6 = 0;
+            __delay_ms(100);
+            LED5 = 0;
+            __delay_ms(100);
+            LED4 = 0;
+            __delay_ms(100);
+            LED3 = 0;
+            __delay_ms(100);
+        }
+
+        if(SW2 == 0)
+        {
+            LED3 = 1;
+            __delay_ms(100);
+            LED4 = 1;
+            __delay_ms(100);
+            LED5 = 1;
+            __delay_ms(100);
+            LED6 = 1;
+            __delay_ms(100);
+            LED3 = 0;
+            __delay_ms(100);
+            LED4 = 0;
+            __delay_ms(100);
+            LED5 = 0;
+            __delay_ms(100);
+            LED6 = 0;
+            __delay_ms(100);
+        }
+
+        if(SW1 == 0)
+        {
+            LED1 = 1;
+            __delay_ms(100);
+            LED1 = 0;
+            __delay_ms(100);
+            LED1 = 1;
+            RESET();
+        }
+        Answer: When I run the program that I made the individual programs work fine. However when I press all the buttons at once they don't all activate at the same time.
+        The computer seem to take turns between the programs from top to bottom. It will run all of the code as if it were on giant if statment because all of the conditions are met.
+        The computer doesn't run everything at once because it reads down the text. The delay function also helps make this apparent.
+
+
  * 
  * 5. Create a program that makes a different tone for each pushbutton.
  * 
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what the tone waveform would look
  *    like when more than one button is held.
+
+ Answer: when more than one button is held the tone wave form would look like a composition of the two waves.
+
+//Program for different tone for each button.
+        if(SW2 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(500);
+        }
+
+        if(SW3 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(700);
+        }
+
+        if(SW4 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(900);
+        }
+
+        if(SW5 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(1100);
+        }
+        
+
+        if(SW1 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(1000);
+            RESET();
+        }
  * 
  * 6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
  *    an industrial machine. LED D4 should turn on when SW3 is pressed, stay on
  *    even after SW3 is released, and turn off when SW4 is pressed. Test your
  *    program to make sure it works.
+
+        if(SW3 == 0)
+        {
+            LED4 = 1;
+        }
+        if(SW4 == 0)
+        {
+            LED4 = 0;
+        }
  * 
  * 7. Running your program from 6, above, describe what happens when both SW3
  *    and SW4 are pressed. Does LED D4 stay on? If so, how does the brightness
  *    of LED D4 compare between its normal on state following SW3 being pressed
  *    to this new state when both SW3 and SW4 are bing held? Can you explain
  *    why it changes?
+      Answer: When both SW3 and SW4 are pressed LED D4 stays on. The brightness of the LED is less than when SW4 is not being pressed.
+      It probably is less bright because the device is continuesly shutting it off and turning it off when it reads the code from top to bottom.
  * 
  * 8. As you can imagine, an industrial machine that is able to turn on even
  *    while its 'Stop' button is pressed represents a significant safety hazard.
@@ -307,4 +424,26 @@ int main(void)
  *    connected to the microcontroller instead of the anode (positive) pin as
  *    with the other LEDs. This means that you need to make D1's output a zero
  *    to turn D1 on. Try it! Make a program that controls or flashes LED D1.
+ 
+   if(SW3 == 0)
+   {
+       LED1 = 0;
+       __delay__ms(100);
+
+       LED1 = 0;
+       __delay__ms(100);
+
+       LED1 = 1;
+       __delay__ms(100);
+
+       LED1 = 0;
+       __delay__ms(100);
+   }
+
+ *
+ *
+ *
+ *
+ *
+ *
  */
