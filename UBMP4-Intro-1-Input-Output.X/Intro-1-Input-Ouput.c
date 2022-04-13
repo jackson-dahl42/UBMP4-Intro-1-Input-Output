@@ -105,7 +105,7 @@ int main(void)
  *    when the statement LED3 = 1; runs?
  *
  *    Answer: I excpect the voltage of the microcontroller to LED3 to be 0 when the statement  LED3 = 0; runs. I excpect the voltge
- *    of the microcontroller to  the LED3 would be 2.9 V if the statement LED3 = 1; runs.
+ *    of the microcontroller to  the LED3 would be 2.9 V or between 1.8 and 3.3 V if the statement LED3 = 1; runs.
  * 
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
