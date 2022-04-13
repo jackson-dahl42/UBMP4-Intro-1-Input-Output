@@ -36,8 +36,38 @@ int main(void)
 
 
         // Add code for your Program Analysis and Programming Activities here:
-  
+
+        if(SW2 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(500);
+        }
+
+        if(SW3 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(700);
+        }
+
+        if(SW4 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(900);
+        }
+
+        if(SW5 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(1100);
+        }
         
+
+        if(SW1 == 0)
+        {
+            BEEPER = !BEEPER;
+            __delay_us(1000);
+            RESET();
+        }
 
         // Activate bootloader if SW1 is pressed.
         if(SW1 == 0)
@@ -417,6 +447,14 @@ int main(void)
  *    Using a logical conditional operator, modify the start-stop program from
  *    activity 5 to make it safer. SW3 should only turn on LED D4 if SW4 is
  *    released.
+        if(SW3 == 0 && SW4 == 1)
+        {
+            LED4 = 1;
+        }
+        if(SW4 == 0)
+        {
+            LED4 = 0;
+        }
  * 
  * 9. LED D1 is normally used to indicate that a program is running, but it can
  *    be controlled by your program as well. If you take a look at the UBMP4
